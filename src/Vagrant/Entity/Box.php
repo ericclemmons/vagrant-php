@@ -1,6 +1,6 @@
 <?php
 
-namespace EC\Bundle\VagrantBundle\Entity;
+namespace Vagrant\Entity;
 
 /**
  * @author Eric Clemmons <eric@smarterspam.com>

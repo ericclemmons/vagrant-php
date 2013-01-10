@@ -1,9 +1,9 @@
 <?php
 
-namespace EC\Bundle\VagrantBundle\Collection;
+namespace Vagrant\Collection;
 
 use ArrayIterator, Countable, IteratorAggregate;
-use EC\Bundle\VagrantBundle\Entity\Box;
+use Vagrant\Entity\Box;
 
 /**
  * @author Eric Clemmons <eric@smarterspam.com>

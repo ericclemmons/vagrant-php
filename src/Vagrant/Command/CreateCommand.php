@@ -1,12 +1,12 @@
 <?php
 
-namespace EC\Bundle\VagrantBundle\Command;
+namespace Vagrant\Command;
 
-use EC\Bundle\VagrantBundle\Generator\VagrantGenerator;
-use EC\Bundle\VagrantBundle\Entity\Box;
-use EC\Bundle\VagrantBundle\Repository\BoxRepository;
-use Sensio\Bundle\GeneratorBundle\Command\Helper\DialogHelper;
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Vagrant\Generator\Generator;
+use Vagrant\Entity\Box;
+use Vagrant\Repository\BoxRepository;
+use Vagrant\Command\Helper\DialogHelper;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @author Eric Clemmons <eric@smarterspam.com>
  */
-class VagrantGenerateCommand extends ContainerAwareCommand
+class CreateCommand extends Command
 {
     protected $boxRepository;
 
@@ -23,7 +23,7 @@ class VagrantGenerateCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('generate:vagrant')
+            ->setName('create')
             ->setDescription('Interactively generate Vagranfile configuration')
             ->setDefinition(array(
                 new InputOption('host', '', InputOption::VALUE_REQUIRED, 'Hostname of VM'),
@@ -76,7 +76,7 @@ class VagrantGenerateCommand extends ContainerAwareCommand
     protected function getDialogHelper()
     {
         $dialog = $this->getHelperSet()->get('dialog');
-        if (!$dialog || get_class($dialog) !== 'Sensio\Bundle\GeneratorBundle\Command\Helper\DialogHelper') {
+        if (!$dialog || get_class($dialog) !== 'Vagrant\Comment\Helper\DialogHelper') {
             $this->getHelperSet()->set($dialog = new DialogHelper());
         }
 
@@ -86,7 +86,7 @@ class VagrantGenerateCommand extends ContainerAwareCommand
     protected function getGenerator()
     {
         if (null === $this->generator) {
-            $this->generator = new VagrantGenerator(__DIR__.'/../Resources/skeleton');
+            $this->generator = new Generator(__DIR__.'/../Resources/skeleton');
         }
 
         return $this->generator;
@@ -95,7 +95,7 @@ class VagrantGenerateCommand extends ContainerAwareCommand
     protected function interact(InputInterface $input, OutputInterface $output)
     {
         $dialog = $this->getDialogHelper();
-        $dialog->writeSection($output, 'Welcome to the Symfony2 Vagrantfile generator');
+        $dialog->writeSection($output, 'Welcome to the Vagrant PHP Vagrantfile generator');
 
         $output->writeln(array(
             '',
@@ -123,7 +123,7 @@ class VagrantGenerateCommand extends ContainerAwareCommand
             'You may override the default provided.',
             '',
         ));
-        $defaultIp  = $input->getOption('ip') ?: VagrantGenerator::generateIp();
+        $defaultIp  = $input->getOption('ip') ?: Generator::generateIp();
         $ip         = $dialog->askAndValidate($output, $dialog->getQuestion('Vagrant IP address', $defaultIp), function($ip) {
             return Validators::validateIp($ip);
         }, false, $defaultIp);

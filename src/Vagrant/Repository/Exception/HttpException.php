@@ -1,6 +1,6 @@
 <?php
 
-namespace EC\Bundle\VagrantBundle\Repository\Exception;
+namespace Vagrant\Repository\Exception;
 
 use Exception;
 

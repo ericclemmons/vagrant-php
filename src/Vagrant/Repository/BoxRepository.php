@@ -1,10 +1,10 @@
 <?php
 
-namespace EC\Bundle\VagrantBundle\Repository;
+namespace Vagrant\Repository;
 
-use EC\Bundle\VagrantBundle\Entity\Box;
-use EC\Bundle\VagrantBundle\Collection\BoxCollection;
-use EC\Bundle\VagrantBundle\Repository\Exception\HttpException;
+use Vagrant\Entity\Box;
+use Vagrant\Collection\BoxCollection;
+use Vagrant\Repository\Exception\HttpException;
 use Guzzle\Service\Client;
 use Guzzle\Http\Exception\HttpException as GuzzleHttpException;
 use Symfony\Component\DomCrawler\Crawler;

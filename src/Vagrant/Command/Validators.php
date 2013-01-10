@@ -1,9 +1,9 @@
 <?php
 
-namespace EC\Bundle\VagrantBundle\Command;
+namespace Vagrant\Command;
 
-use EC\Bundle\VagrantBundle\Entity\Box;
-use EC\Bundle\VagrantBundle\Collection\BoxCollection;
+use Vagrant\Entity\Box;
+use Vagrant\Collection\BoxCollection;
 
 /**
  * @author Eric Clemmons <eric@smarterspam.com>
