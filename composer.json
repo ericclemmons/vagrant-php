@@ -1,18 +1,14 @@
 {
-    "name":         "ericclemmons/vagrant-bundle",
-    "description":  "Symfony2 bundle to generate a working Vagrant environment",
-    "homepage":     "https://github.com/ericclemmons/ECVagrantBundle",
-    "keywords":     ["vagrant", "generate", "generator"],
+    "name":         "ericclemmons/vagrant-php",
+    "description":  "Instantly setup & launch PHP5.x Vagrant machine",
+    "homepage":     "https://github.com/ericclemmons/vagrant-php",
+    "keywords":     ["vagrant", "php", "generate", "generator"],
     "type":         "symfony-bundle",
     "license":      "MIT",
     "authors": [
         {
             "name": "Eric Clemmons",
             "email": "eric@smarterspam.com"
-        },
-        {
-            "name": "Paul Seiffert",
-            "email": "paul.seiffert@gmail.com"
         }
     ],
     "require": {
